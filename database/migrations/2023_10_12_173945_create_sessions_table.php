@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id', 255);
+            $table->string('user_id', 255);
             $table->bigInteger('employee_id');
             $table->string('ip_address', 45);
             $table->text('user_agent');
