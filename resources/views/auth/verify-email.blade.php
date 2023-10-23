@@ -1,7 +1,7 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+        <img src="{{ asset('img/logo.png') }}" alt="logo" width="50px" class="me-3">
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
@@ -30,7 +30,7 @@
                     href="{{ route('profile.show') }}"
                     class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                    {{ __('Edit Profile') }}</a>
+                    {{ __('Editar Perfil') }}</a>
 
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf

@@ -5,15 +5,24 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+                <a href="{{ url('/') }}">
+                        <img src="{{ asset('img/logo.png') }}" alt="logo" width="50px" class="me-3">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('bookings') }}" :active="request()->routeIs('bookings')">
+                        {{ __('Lista de Reservas') }}
+                    </x-nav-link>
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('rooms-info') }}" :active="request()->routeIs('rooms-info')">
+                        {{ __('Informações - Quartos') }}
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('settings') }}" :active="request()->routeIs('settings')">
+                        {{ __('Configurações') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -95,11 +104,11 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('Administrar Conta') }}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -139,8 +148,17 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="{{ route('bookings') }}" :active="request()->routeIs('bookings')">
+                {{ __('Lista de Reservas') }}
+            </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('rooms-info') }}" :active="request()->routeIs('rooms-info')">
+                {{ __('Informações - Quartos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('settings') }}" :active="request()->routeIs('settings')">
+                {{ __('Configurações') }}
             </x-responsive-nav-link>
         </div>
 
@@ -162,7 +180,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
